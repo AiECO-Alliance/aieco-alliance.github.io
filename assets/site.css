@@ -8,8 +8,9 @@
   --accent2:#b9fbc0;
   --radius:18px;
   --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --bannerPadTop: 70px;   /* increase/decrease to control banner height */
 }
-
+ 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
@@ -34,6 +35,19 @@ a{color:inherit; text-decoration:none}
 }
 
 .navWrap{max-width:1100px; margin:0 auto; padding: 10px 18px; position:relative}
+/* Make the banner area taller by adding space above the nav row */
+.siteHeader.hasBanner .navWrap{
+  padding-top: calc(10px + var(--bannerPadTop));
+  padding-bottom: 14px;
+}
+
+/* Reduce banner height on small screens so it doesn’t take over */
+@media (max-width: 900px){
+  .siteHeader.hasBanner .navWrap{
+    padding-top: 44px;
+  }
+}
+
 
 /* Optional banner image behind the nav (add assets/nav-banner.png later) */
 .siteHeader.hasBanner::before{
