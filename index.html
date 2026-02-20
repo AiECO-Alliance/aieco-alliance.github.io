@@ -5,149 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AiECO Alliance</title>
   <meta name="description" content="AiECO Alliance — AI-empowered agroecosystem modeling platform" />
-  <style>
-    :root{
-      --bg:#0b0d10;
-      --card:#11151b;
-      --muted:#9aa4b2;
-      --text:#e8edf3;
-      --line:rgba(232,237,243,.12);
-      --accent:#8bd3ff;
-      --accent2:#b9fbc0;
-      --radius:18px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1000px 600px at 10% 10%, rgba(139,211,255,.18), transparent 55%),
-                  radial-gradient(900px 500px at 90% 90%, rgba(185,251,192,.12), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-    }
-    a{color:inherit}
-    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 60px}
-    header{
-      display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:18px;
-    }
-    .brand{display:flex; align-items:center; gap:12px}
-    .logo{
-      width:42px; height:42px; border-radius:14px;
-      border:1px solid var(--line); background:linear-gradient(135deg, rgba(139,211,255,.25), rgba(185,251,192,.18));
-      box-shadow:var(--shadow);
-      display:grid; place-items:center; font-weight:800;
-    }
-    .brand h1{font-size:14px; margin:0; letter-spacing:.3px}
-    .brand p{font-size:12px; margin:2px 0 0; color:var(--muted)}
-    .actions{display:flex; gap:10px; flex-wrap:wrap}
-    .btn{
-      border:1px solid var(--line); background:rgba(255,255,255,.03);
-      color:var(--text);
-      padding:10px 12px; border-radius:14px; text-decoration:none; font-size:13px;
-    }
-    .btn.primary{border-color:rgba(139,211,255,.35); background:rgba(139,211,255,.10)}
-    .hero{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      border-radius:28px; padding:22px 18px; box-shadow:var(--shadow);
-      display:grid; grid-template-columns: 1.2fr .8fr; gap:16px;
-    }
-    @media (max-width: 860px){ .hero{grid-template-columns:1fr} }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      border:1px solid var(--line); border-radius:999px; padding:6px 10px;
-      color:var(--muted); font-size:12px;
-    }
-    .hero h2{margin:12px 0 0; font-size:34px; letter-spacing:-.5px; line-height:1.1}
-    .hero p{margin:12px 0 0; color:var(--muted); line-height:1.6}
-    .hero .quick{
-      border:1px solid var(--line); border-radius:22px; padding:14px; background:rgba(255,255,255,.02)
-    }
-    .quick h3{margin:0 0 10px; font-size:14px}
-    .quick .qbtn{width:100%; text-align:left; margin:8px 0; display:block}
-    .tabs{
-      margin-top:18px;
-      display:flex; flex-wrap:wrap; gap:8px;
-      border:1px solid var(--line); border-radius:22px; padding:8px;
-      background:rgba(255,255,255,.02);
-    }
-    .tab{
-      border:1px solid transparent;
-      background:transparent;
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:16px;
-      font-size:13px;
-      cursor:pointer;
-    }
-    .tab[aria-selected="true"]{
-      border-color:rgba(139,211,255,.35);
-      background:rgba(139,211,255,.10);
-    }
-    .panel{display:none; margin-top:14px}
-    .panel.active{display:block}
-    .sectionTitle{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      margin:18px 0 12px;
-    }
-    .sectionTitle h3{margin:0; font-size:18px}
-    .sectionTitle p{margin:6px 0 0; color:var(--muted); font-size:13px; max-width:70ch}
-    .grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:12px}
-    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
-    .card{
-      border:1px solid var(--line); border-radius:22px; padding:14px;
-      background:rgba(255,255,255,.02);
-    }
-    .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
-    .tag{
-      font-size:12px; color:var(--muted);
-      border:1px solid var(--line); padding:4px 8px; border-radius:999px;
-    }
-    .muted{color:var(--muted)}
-    .kpi{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-    .kpi .tag{border-color:rgba(232,237,243,.16)}
-    .row{display:flex; gap:10px; flex-wrap:wrap}
-    .input, select{
-      background:rgba(0,0,0,.18); border:1px solid var(--line);
-      color:var(--text); border-radius:14px; padding:10px 10px; font-size:13px;
-      outline:none;
-    }
-    footer{margin-top:30px; border-top:1px solid var(--line); padding-top:18px; color:var(--muted); font-size:12px}
-    .small{font-size:12px}
-    .badge{
-      display:inline-flex; align-items:center;
-      border:1px solid var(--line); border-radius:999px; padding:4px 8px;
-      font-size:12px; color:var(--muted);
-    }
-    .badge.solid{color:var(--bg); background:var(--text); border-color:transparent}
-  </style>
+  <link rel="stylesheet" href="/assets/site.css" />
 </head>
 
+<!-- Add class "hasBanner" when you add /assets/nav-banner.png -->
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">A</div>
-        <div>
-          <h1>AiECO Alliance</h1>
-          <p>AI-empowered agroecosystem modeling platform</p>
-        </div>
-      </div>
-      <div class="actions">
-        <a class="btn" href="https://github.com/aieco-alliance" target="_blank" rel="noreferrer">GitHub Org</a>
-        <a class="btn primary" href="#sponsorship" onclick="openTab('sponsorship')">Get involved</a>
-      </div>
-    </header>
+  <header class="siteHeader hasBanner">
+    <div class="navWrap">
+      <div class="navRow">
+        <a class="brand" href="/">
+          <div class="logo">A</div>
+          <div class="brandTitle">
+            <b>AiECO Alliance</b>
+            <span>AI-empowered agroecosystem modeling</span>
+          </div>
+        </a>
 
+        <!-- Desktop nav with dropdowns -->
+        <nav class="navLinks" aria-label="Primary navigation">
+          <div class="navItem">
+            <a class="navLink" data-nav href="/team/">Alliance Team</a>
+          </div>
+
+          <div class="navItem">
+            <button class="navLink" type="button">
+              AI-product library <span class="caret">▾</span>
+            </button>
+            <div class="dropdown">
+              <a class="dropLink" href="/library/" data-nav>Browse library</a>
+              <a class="dropLink" href="/library/#emulation">Emulators & surrogates</a>
+              <a class="dropLink" href="/library/#inference">Calibration & UQ</a>
+              <a class="dropLink" href="/library/#operators">RS operators</a>
+              <div class="dropNote">You can refine these later.</div>
+            </div>
+          </div>
+
+          <div class="navItem">
+            <a class="navLink" data-nav href="/outputs/">Outputs</a>
+          </div>
+
+          <div class="navItem">
+            <a class="navLink" data-nav href="/model/">AiECO model</a>
+          </div>
+
+          <div class="navItem">
+            <button class="navLink" type="button">
+              About <span class="caret">▾</span>
+            </button>
+            <div class="dropdown">
+              <a class="dropLink" href="/about/" data-nav>About AiECO</a>
+              <a class="dropLink" href="/about/#governance">Governance</a>
+              <a class="dropLink" href="/about/#faq">FAQ</a>
+            </div>
+          </div>
+
+          <div class="navItem">
+            <a class="navLink" data-nav href="/sponsorship/">Sponsorship</a>
+          </div>
+        </nav>
+
+        <!-- Mobile button -->
+        <button id="menuBtn" class="menuBtn" type="button">Menu</button>
+      </div>
+
+      <!-- Mobile panel -->
+      <div id="mobilePanel" class="mobilePanel" aria-label="Mobile navigation">
+        <a data-nav href="/">Home</a>
+        <a data-nav href="/team/">Alliance Team</a>
+        <a data-nav href="/library/">AI-product library</a>
+        <a data-nav href="/outputs/">Outputs</a>
+        <a data-nav href="/model/">AiECO model</a>
+        <a data-nav href="/about/">About</a>
+        <a data-nav href="/sponsorship/">Sponsorship</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
     <section class="hero">
       <div>
-        <span class="pill">✨ AiECO Alliance • Science-first AI for climate-smart agriculture</span>
-        <h2>Turning AI into scientific capability for sustainable agriculture.</h2>
+        <span class="pill">✨ Science-first AI for climate-smart agriculture</span>
+        <h1>Turning AI into scientific capability for sustainable agriculture.</h1>
         <p>
           AiECO connects ecosystem modelers, remote sensing scientists, and AI researchers to build open, extensible tools
           for simulating carbon, water, nutrients, and greenhouse gases—reliably, transparently, and at scale.
         </p>
-        <div class="kpi">
+        <div class="btnRow">
+          <a class="btn primary" href="/sponsorship/">Get involved</a>
+          <a class="btn" href="/library/">Explore AI products</a>
+          <a class="btn" href="/outputs/">See outputs</a>
+        </div>
+        <div class="tags">
           <span class="tag">Open-source first</span>
           <span class="tag">Model–data fusion</span>
           <span class="tag">Remote-sensing constraints</span>
@@ -155,343 +103,78 @@
         </div>
       </div>
 
-      <div class="quick">
+      <div class="card">
         <h3>Quick links</h3>
-        <a class="btn qbtn" href="#team" onclick="openTab('team')">Alliance Team</a>
-        <a class="btn qbtn" href="#model" onclick="openTab('model')">AiECO model</a>
-        <a class="btn qbtn" href="#about" onclick="openTab('about')">About</a>
-        <p class="small muted" style="margin-top:10px">
-          Replace placeholders with real links (contact email, GitHub repos, docs).
+        <p class="muted">Start here and replace placeholders with real links.</p>
+        <div class="btnRow">
+          <a class="btn" href="/team/">Team</a>
+          <a class="btn" href="/model/">Architecture</a>
+          <a class="btn" href="/about/">Mission</a>
+        </div>
+        <p class="muted" style="margin-top:12px;font-size:12px">
+          Contact: (add email) • GitHub: orgs/aieco-alliance
         </p>
       </div>
     </section>
 
-    <nav class="tabs" role="tablist" aria-label="AiECO tabs">
-      <button class="tab" role="tab" id="tab-team" aria-controls="panel-team" aria-selected="true" onclick="openTab('team')">Alliance Team</button>
-      <button class="tab" role="tab" id="tab-library" aria-controls="panel-library" aria-selected="false" onclick="openTab('library')">AI-product library</button>
-      <button class="tab" role="tab" id="tab-sponsorship" aria-controls="panel-sponsorship" aria-selected="false" onclick="openTab('sponsorship')">Sponsorship</button>
-      <button class="tab" role="tab" id="tab-outputs" aria-controls="panel-outputs" aria-selected="false" onclick="openTab('outputs')">Outputs</button>
-      <button class="tab" role="tab" id="tab-model" aria-controls="panel-model" aria-selected="false" onclick="openTab('model')">AiECO model</button>
-      <button class="tab" role="tab" id="tab-about" aria-controls="panel-about" aria-selected="false" onclick="openTab('about')">About</button>
-    </nav>
-
-    <!-- TEAM -->
-    <section id="panel-team" class="panel active" role="tabpanel" aria-labelledby="tab-team">
-      <div class="sectionTitle">
-        <div>
-          <h3>Alliance Team</h3>
-          <p>Replace the placeholders with real members, roles, affiliations, and links.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <strong>Founder / Director (Your Name)</strong>
-          <div class="muted">Alliance lead • Ecosystem modeling + AI</div>
-          <div class="meta">
-            <span class="tag">Your Institution</span>
-            <span class="tag">Fort Collins, CO</span>
-          </div>
-          <div class="meta">
-            <span class="tag">Agroecosystem modeling</span>
-            <span class="tag">AI surrogates</span>
-            <span class="tag">Remote sensing</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <strong>Working Group Chair (Placeholder)</strong>
-          <div class="muted">Benchmarking + evaluation</div>
-          <div class="meta">
-            <span class="tag">Partner University / Lab</span>
-            <span class="tag">Global</span>
-          </div>
-          <div class="meta">
-            <span class="tag">Benchmarks</span>
-            <span class="tag">Reproducibility</span>
-            <span class="tag">Open science</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <strong>Core Maintainer (Placeholder)</strong>
-          <div class="muted">Software infrastructure</div>
-          <div class="meta">
-            <span class="tag">Research Institute</span>
-            <span class="tag">Global</span>
-          </div>
-          <div class="meta">
-            <span class="tag">Workflows</span>
-            <span class="tag">HPC</span>
-            <span class="tag">Packaging</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <strong>Remote Sensing Lead (Placeholder)</strong>
-          <div class="muted">Observation operators and constraints</div>
-          <div class="meta">
-            <span class="tag">Agency / University</span>
-            <span class="tag">Global</span>
-          </div>
-          <div class="meta">
-            <span class="tag">Radiative transfer</span>
-            <span class="tag">GEE</span>
-            <span class="tag">Data fusion</span>
-          </div>
-        </div>
-      </div>
+    <section class="sectionTitle">
+      <h2>What we build</h2>
+      <p>Reusable components that accelerate model development, improve observational constraints, and support fair benchmarking.</p>
     </section>
-
-    <!-- LIBRARY -->
-    <section id="panel-library" class="panel" role="tabpanel" aria-labelledby="tab-library">
-      <div class="sectionTitle">
-        <div>
-          <h3>AI-product library</h3>
-          <p>Search and filter reusable components: emulators, calibration tools, operators, benchmarks, workflow templates.</p>
-        </div>
-        <div class="row">
-          <input id="q" class="input" placeholder="Search…" />
-          <select id="cat"></select>
-          <select id="mat"></select>
-        </div>
-      </div>
-
-      <div id="products" class="grid"></div>
-    </section>
-
-    <!-- SPONSORSHIP -->
-    <section id="panel-sponsorship" class="panel" role="tabpanel" aria-labelledby="tab-sponsorship">
-      <div class="sectionTitle">
-        <div>
-          <h3>Sponsorship</h3>
-          <p>Support open, high-impact infrastructure for sustainable agriculture research. Replace tiers with your real program.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <strong>Seed tier</strong>
-          <div class="muted">For pilot support & student contributions</div>
-          <ul class="muted">
-            <li>Logo on website</li>
-            <li>Early access to roadmaps</li>
-            <li>Acknowledgement in releases</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Growth tier</strong>
-          <div class="muted">For sustained tool development & benchmarks</div>
-          <ul class="muted">
-            <li>Priority feature requests (public)</li>
-            <li>Quarterly sponsor brief</li>
-            <li>Co-hosted webinar</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Impact tier</strong>
-          <div class="muted">For flagship releases & community expansion</div>
-          <ul class="muted">
-            <li>Strategic advisory seat (rotating)</li>
-            <li>Co-branded benchmark report</li>
-            <li>Recruiting / internship pipeline</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:12px">
-        <strong>What sponsorship enables</strong>
-        <p class="muted">Interoperable modeling core • Trustworthy AI • Benchmarks & documentation • Community workshops.</p>
-      </div>
-    </section>
-
-    <!-- OUTPUTS -->
-    <section id="panel-outputs" class="panel" role="tabpanel" aria-labelledby="tab-outputs">
-      <div class="sectionTitle">
-        <div>
-          <h3>Outputs</h3>
-          <p>Publications, datasets, software, and community activities produced by the alliance.</p>
-        </div>
-      </div>
-
+    <section class="grid">
       <div class="card">
-        <div class="badge">2026</div>
-        <h4 style="margin:10px 0 6px">AiECO Alliance: A framework for AI-empowered agroecosystem modeling</h4>
-        <div class="meta">
-          <span class="badge">Paper</span>
-          <span class="badge">In preparation</span>
-        </div>
-        <p class="muted">Defines the architecture, interfaces, and evaluation principles for modular AI + process-based integration.</p>
+        <h3>AI-surrogate & emulator tools</h3>
+        <p class="muted">Multi-output emulators, uncertainty-aware training, and portable inference artifacts.</p>
+        <div class="tags"><span class="tag">LSTM/Transformers</span><span class="tag">UQ</span><span class="tag">Benchmarks</span></div>
       </div>
-
-      <div class="card" style="margin-top:12px">
-        <div class="badge">2026</div>
-        <h4 style="margin:10px 0 6px">Benchmark Hub v1: multi-site agroecosystem evaluation suite</h4>
-        <div class="meta">
-          <span class="badge">Dataset</span>
-          <span class="badge">In preparation</span>
-        </div>
-        <p class="muted">Standardized datasets and splits for fluxes, yields, and soil carbon with reproducible scoring scripts.</p>
+      <div class="card">
+        <h3>Remote sensing operators</h3>
+        <p class="muted">Translate model states to satellite observables (LAI, albedo, canopy traits) for principled constraints.</p>
+        <div class="tags"><span class="tag">RTM</span><span class="tag">GEE</span><span class="tag">Data fusion</span></div>
+      </div>
+      <div class="card">
+        <h3>Calibration & model-data fusion</h3>
+        <p class="muted">Reusable priors, inference workflows, diagnostics, and evaluation-first pipelines.</p>
+        <div class="tags"><span class="tag">Bayesian</span><span class="tag">Ensembles</span><span class="tag">Reproducible</span></div>
       </div>
     </section>
 
-    <!-- MODEL -->
-    <section id="panel-model" class="panel" role="tabpanel" aria-labelledby="tab-model">
-      <div class="sectionTitle">
-        <div>
-          <h3>AiECO model</h3>
-          <p>A modular framework connecting process-based ecosystem models with AI components, remote sensing constraints, and uncertainty-aware inference.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <strong>Conceptual stack</strong>
-          <ol class="muted">
-            <li><b>Observations</b>: remote sensing, flux towers, inventories</li>
-            <li><b>Operators</b>: RTM / observation models, aggregation</li>
-            <li><b>Model core</b>: C–N–H2O–energy conservation</li>
-            <li><b>AI components</b>: surrogates, learned modules, accelerators</li>
-            <li><b>Inference</b>: calibration, DA, uncertainty quantification</li>
-          </ol>
-        </div>
-        <div class="card">
-          <strong>Principles</strong>
-          <div class="meta">
-            <span class="tag">Interoperability</span>
-            <span class="tag">Transparency</span>
-            <span class="tag">Evaluation-first</span>
-            <span class="tag">Uncertainty-aware</span>
-          </div>
-          <p class="muted">Swap components without refactoring entire pipelines; document assumptions and uncertainty behavior; improve skill via shared benchmarks.</p>
-        </div>
-      </div>
+    <section class="sectionTitle">
+      <h2>Impact</h2>
+      <p>Manual for now — update these numbers anytime.</p>
+    </section>
+    <section class="counters">
+      <div class="counter"><b>6</b><span>Core themes</span></div>
+      <div class="counter"><b>10+</b><span>Partner labs (target)</span></div>
+      <div class="counter"><b>3</b><span>Working groups (initial)</span></div>
+      <div class="counter"><b>1</b><span>Public website</span></div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="panel-about" class="panel" role="tabpanel" aria-labelledby="tab-about">
-      <div class="sectionTitle">
-        <div>
-          <h3>About</h3>
-          <p>What AiECO is, what it is not, and how it stays open and trustworthy.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <strong>Mission</strong>
-          <p class="muted">
-            AiECO is an alliance dedicated to building next-generation agroecosystem modeling infrastructure that blends
-            process-based understanding with modern AI—without sacrificing interpretability, reproducibility, or uncertainty awareness.
-          </p>
-          <p class="muted">
-            Goals: scalable runs • remote-observation constraints • fair benchmarks • reusable components across projects.
-          </p>
-        </div>
-        <div class="card">
-          <strong>FAQ</strong>
-          <p class="muted"><b>Is AiECO a single model?</b> No—AiECO is a framework that wraps existing process-based models and connects them to shared tools.</p>
-          <p class="muted"><b>How is this different from knowledge-guided ML?</b> AiECO is bidirectional: knowledge can constrain AI, and AI can extend/accelerate scientific workflows.</p>
-          <p class="muted"><b>How can I contribute?</b> Code, benchmarks, tutorials, datasets, or join a working group.</p>
-        </div>
-      </div>
+    <section class="sectionTitle">
+      <h2>News & updates</h2>
+      <p>Keep this lightweight at first (manual list). Later we can convert to a real blog feed.</p>
+    </section>
+    <section class="news">
+      <article class="newsItem">
+        <b>Website launched</b>
+        <div class="newsMeta">Feb 2026 • Announcement</div>
+        <p>AiECO Alliance website is live on GitHub Pages. Next: publish initial library entries and recruit working-group leads.</p>
+      </article>
+      <article class="newsItem">
+        <b>Call for contributors</b>
+        <div class="newsMeta">Feb 2026 • Community</div>
+        <p>We’re looking for collaborators on benchmarks, remote-sensing operators, and uncertainty-aware surrogates.</p>
+      </article>
     </section>
 
-    <footer>
+    <footer class="footer">
       <div><b>AiECO Alliance</b> • Open, interoperable ecosystem modeling + AI</div>
-      <div style="margin-top:6px">Add: code of conduct • governance • license • privacy</div>
+      <div style="margin-top:6px">Add: governance • code of conduct • license • privacy</div>
     </footer>
-  </div>
+  </main>
 
-  <script>
-    const products = [
-      { name:"Surrogate Studio", category:"Emulation", maturity:"Prototype", tags:["LSTM","Multi-output","Uncertainty"],
-        desc:"Train and evaluate uncertainty-aware emulators for process-based outputs across sites and years.",
-        highlights:["Multi-timescale targets (daily fluxes + annual aggregates)","Benchmark-ready metrics + plots","Export lightweight inference artifacts"]
-      },
-      { name:"Observation Operator Kit", category:"Remote sensing", maturity:"Beta", tags:["LAI","Albedo","RTM"],
-        desc:"Map model states to what satellites see (and back), enabling principled constraints.",
-        highlights:["Plug-in sensors/products","Aggregation + scaling","Uncertainty propagation"]
-      },
-      { name:"Calibration Workbench", category:"Inference", maturity:"Beta", tags:["Bayesian","MCMC","Ensemble"],
-        desc:"Run calibration and sensitivity workflows with reusable priors and site packages.",
-        highlights:["Prior templates for common parameters","Emulator-assisted calibration","Diagnostics + posterior checks"]
-      },
-      { name:"Benchmark Hub", category:"Benchmarking", maturity:"Stable", tags:["Datasets","Leaderboards","Baselines"],
-        desc:"Curated benchmark suites for fair comparison across models and AI components.",
-        highlights:["Standard train/test splits","Uncertainty-aware scoring","Community baselines"]
-      },
-      { name:"Workflow Templates", category:"Infrastructure", maturity:"Stable", tags:["Containers","HPC","Pipelines"],
-        desc:"Reproducible pipelines for running models, training surrogates, and generating reports.",
-        highlights:["Container-first execution","HPC-friendly orchestration","Audit logs for provenance"]
-      }
-    ];
-
-    function openTab(key){
-      const keys = ["team","library","sponsorship","outputs","model","about"];
-      keys.forEach(k=>{
-        document.getElementById("panel-"+k).classList.toggle("active", k===key);
-        document.getElementById("tab-"+k).setAttribute("aria-selected", k===key ? "true":"false");
-      });
-      history.replaceState(null, "", "#"+key);
-    }
-
-    function renderFilters(){
-      const catSel = document.getElementById("cat");
-      const matSel = document.getElementById("mat");
-      const cats = ["All", ...new Set(products.map(p=>p.category))].sort();
-      const mats = ["All", ...new Set(products.map(p=>p.maturity))];
-
-      catSel.innerHTML = cats.map(c=>`<option>${c}</option>`).join("");
-      matSel.innerHTML = mats.map(m=>`<option>${m}</option>`).join("");
-    }
-
-    function renderProducts(){
-      const q = (document.getElementById("q").value || "").toLowerCase().trim();
-      const cat = document.getElementById("cat").value;
-      const mat = document.getElementById("mat").value;
-
-      const filtered = products.filter(p=>{
-        if(cat !== "All" && p.category !== cat) return false;
-        if(mat !== "All" && p.maturity !== mat) return false;
-        if(!q) return true;
-        const hay = [p.name,p.category,p.maturity,p.desc,...p.tags,...p.highlights].join(" ").toLowerCase();
-        return hay.includes(q);
-      });
-
-      const el = document.getElementById("products");
-      el.innerHTML = filtered.map(p=>`
-        <div class="card">
-          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px">
-            <div>
-              <strong>${p.name}</strong>
-              <div class="meta">
-                <span class="tag">${p.category}</span>
-                <span class="badge ${p.maturity==="Stable"?"solid":""}">${p.maturity}</span>
-              </div>
-            </div>
-          </div>
-          <p class="muted" style="margin:10px 0 0">${p.desc}</p>
-          <div class="meta">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
-          <ul class="muted" style="margin:10px 0 0">
-            ${p.highlights.map(h=>`<li>${h}</li>`).join("")}
-          </ul>
-        </div>
-      `).join("") || `<div class="card"><b>No matches.</b> <span class="muted">Try a different keyword or set filters to All.</span></div>`;
-    }
-
-    // init
-    renderFilters();
-    renderProducts();
-    ["q","cat","mat"].forEach(id => document.getElementById(id).addEventListener("input", renderProducts));
-    document.getElementById("cat").addEventListener("change", renderProducts);
-    document.getElementById("mat").addEventListener("change", renderProducts);
-
-    // deep-link
-    const hash = (location.hash || "").replace("#","");
-    if(["team","library","sponsorship","outputs","model","about"].includes(hash)) openTab(hash);
-    window.openTab = openTab;
-  </script>
+  <script src="/assets/site.js"></script>
 </body>
 </html>
+
 
