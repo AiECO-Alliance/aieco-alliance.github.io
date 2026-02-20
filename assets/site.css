@@ -8,7 +8,7 @@
   --accent2:#b9fbc0;
   --radius:18px;
   --shadow: 0 10px 30px rgba(0,0,0,.35);
-  --bannerPadTop: 70px;   /* increase/decrease to control banner height */
+  --bannerPadTop: 90px;   /* increase/decrease to control banner height */
 }
  
 *{box-sizing:border-box}
