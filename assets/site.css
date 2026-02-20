@@ -1,13 +1,10 @@
 :root{
-  --bg:#0b0d10;
-  --card:#11151b;
-  --muted:#9aa4b2;
-  --text:#e8edf3;
-  --line:rgba(232,237,243,.12);
-  --accent:#8bd3ff;
-  --accent2:#b9fbc0;
-  --radius:18px;
-  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --bg:#e9f7ff;
+  --card: rgba(255,255,255,.70);
+  --muted:#445266;
+  --text:#0b1220;
+  --line: rgba(11,18,32,.14);
+  --shadow: 0 10px 30px rgba(11,18,32,.10);
   --bannerPadTop: 140px;   /* increase/decrease to control banner height */
 }
  
@@ -16,10 +13,10 @@ html,body{margin:0;padding:0}
 body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   background:
-    radial-gradient(1000px 600px at 10% 10%, rgba(139,211,255,.18), transparent 55%),
-    radial-gradient(900px 500px at 90% 90%, rgba(185,251,192,.12), transparent 55%),
-    var(--bg);
-  color:var(--text);
+    radial-gradient(900px 520px at 12% 8%, rgba(139,211,255,.55), transparent 60%),
+    radial-gradient(900px 520px at 88% 88%, rgba(185,251,192,.35), transparent 60%),
+    linear-gradient(180deg, #d9f1ff 0%, #cfe9ff 45%, #e9f7ff 100%);
+  color:#0b1220;
 }
 a{color:inherit; text-decoration:none}
 .wrap{max-width:1100px; margin:0 auto; padding:22px 18px 64px}
@@ -53,21 +50,26 @@ a{color:inherit; text-decoration:none}
 .siteHeader.hasBanner::before{
   content:"";
   position:absolute;
-  left:0; right:0; top:0; bottom:0;
+  inset:0;
+  pointer-events:none;
 
+  /* Darken LEFT for text readability, keep RIGHT lighter so the land shows */
   background-image:
-    linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.35) 52%, rgba(0,0,0,.70) 100%),
+    linear-gradient(90deg,
+      rgba(0, 8, 28, .82) 0%,
+      rgba(0, 8, 28, .40) 45%,
+      rgba(0, 8, 28, .10) 100%
+    ),
     url("/assets/nav-banner.png");
 
-  /* KEY CHANGE: do not crop the image */
-  background-size: 100% 100%, contain;
+  /* KEY: fit the image to the header box (no cropping) */
+  background-size: 100% 100%, 100% 100%;
   background-repeat: no-repeat, no-repeat;
 
-  /* Center the image inside the banner area */
+  /* Center it (you can tweak the second value later) */
   background-position: center, center 70%;
 
-  opacity: .65;
-  pointer-events:none;
+  opacity: .95;
 }
 
 .navRow{display:flex; align-items:center; justify-content:space-between; gap:12px; position:relative}
@@ -76,7 +78,7 @@ a{color:inherit; text-decoration:none}
 .logo{
   width:40px;height:40px;border-radius:14px;
   border:1px solid var(--line);
-  background: linear-gradient(135deg, rgba(139,211,255,.22), rgba(185,251,192,.14));
+  background: linear-gradient(135deg, rgba(139, 211, 255, 0.205), rgba(185,251,192,.14));
   box-shadow:var(--shadow);
   display:grid; place-items:center;
   font-weight:900;
@@ -86,7 +88,13 @@ a{color:inherit; text-decoration:none}
 .brandTitle span{font-size:12px; color:var(--muted); margin-top:2px}
 
 /* Desktop nav */
-.navLinks{display:flex; align-items:center; gap:6px; flex-wrap:wrap}
+.navLinks{ 
+  font-size: 15px;           /* was ~13px */
+  font-weight: 700;
+  text-transform: uppercase; /* ALL CAPS */
+  letter-spacing: .08em;     /* looks nicer in caps */
+  padding: 12px 14px;        /* slightly larger click area */
+}
 .navItem{position:relative}
 .navLink{
   display:inline-flex; align-items:center; gap:6px;
@@ -118,15 +126,16 @@ a{color:inherit; text-decoration:none}
 }
 .navItem:hover .dropdown{display:block}
 .dropLink{
-  display:flex;
-  padding:10px 10px;
-  border-radius:14px;
-  font-size:13px;
-  color:var(--text);
-  border:1px solid transparent;
+  font-size: 14px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: .06em;
 }
 .dropLink:hover{border-color:rgba(232,237,243,.14); background:rgba(255,255,255,.03)}
-.dropNote{padding:8px 10px; color:var(--muted); font-size:12px}
+.dropNote{
+    padding:8px 10px; color:var(--muted); font-size:12px;  text-transform: none;
+    letter-spacing: normal;
+}
 
 /* Mobile menu */
 .menuBtn{
@@ -148,11 +157,10 @@ a{color:inherit; text-decoration:none}
   padding:8px;
 }
 .mobilePanel a{
-  display:block;
-  padding:12px 12px;
-  border-radius:14px;
-  border:1px solid transparent;
-  font-size:13px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
 }
 .mobilePanel a:hover{border-color:rgba(232,237,243,.14); background:rgba(255,255,255,.03)}
 .mobilePanel a.active{border-color:rgba(139,211,255,.35); background:rgba(139,211,255,.10)}
