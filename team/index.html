@@ -1,12 +1,28 @@
 <!doctype html>
 <html lang="en">
 <header class="siteHeader hasBanner">
+<!-- Banner overlay (hex-chain) -->
+<div class="bannerChain" aria-hidden="true">
+  <div class="brainLayer" aria-hidden="true"></div>
+  <!-- Connector lines -->
+  <svg class="bannerChain__links" viewBox="0 0 1000 300" preserveAspectRatio="none">
+    <!-- Forest -> Pasture -> Cropland -> Wetland -->
+    <path class="chainPath" d="" />
+  </svg>
+
+  <!-- Hex tiles -->
+  <div class="hex hex--forest"  title="Forest"></div>
+  <div class="hex hex--pasture" title="Pasture"></div>
+  <div class="hex hex--cropland" title="Cropland"></div>
+  <div class="hex hex--wetland" title="Wetland"></div>
+</div>
+
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Alliance Team | AiECO Alliance</title>
-  <link rel="stylesheet" href="../index.html">
+  <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
   <div class="wrap">
