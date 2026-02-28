@@ -5,9 +5,8 @@
   --text:#0b1220;
   --line: rgba(11,18,32,.14);
   --shadow: 0 10px 30px rgba(11,18,32,.10);
-  --bannerPadTop: 140px;   /* increase/decrease to control banner height */
 }
- 
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
@@ -23,92 +22,67 @@ a{color:inherit; text-decoration:none}
 
 /* ===== Top Header + Navigation ===== */
 .siteHeader{
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
-  background: rgba(10,12,16,.75);
-  border-bottom: 1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:blur(10px);
+  background:rgba(10,12,16,.92);
+  border-bottom:1px solid rgba(228,236,248,.18);
 }
 
-.navWrap{max-width:1100px; margin:0 auto; padding: 10px 18px; position:relative}
-/* Make the banner area taller by adding space above the nav row */
-.siteHeader.hasBanner .navWrap{
-  padding-top: calc(140px + var(--bannerPadTop));
-  padding-bottom: 16px;
-}
-
-/* Reduce banner height on small screens so it doesn’t take over */
-@media (max-width: 900px){
-  .siteHeader.hasBanner .navWrap{
-    padding-top: 80px;
-  }
-}
-
-
-/* Optional banner image behind the nav (add assets/nav-banner.png later) */
-.siteHeader.hasBanner::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-
-  /* Darken LEFT for text readability, keep RIGHT lighter so the land shows */
-  background-image:
-    linear-gradient(90deg,
-      rgba(0, 8, 28, .82) 0%,
-      rgba(0, 8, 28, .40) 45%,
-      rgba(0, 8, 28, .10) 100%
-    ),
-    url("/assets/nav-banner.png");
-
-  /* KEY: fit the image to the header box (no cropping) */
-  background-size: 100% 100%, 100% 100%;
-  background-repeat: no-repeat, no-repeat;
-
-  /* Center it (you can tweak the second value later) */
-  background-position: center, center 70%;
-
-  opacity: .95;
-}
-
+.navWrap{max-width:1100px; margin:0 auto; padding:10px 18px}
 .navRow{display:flex; align-items:center; justify-content:space-between; gap:12px; position:relative}
+
+.topBanner{max-width:1100px; margin:12px auto 0; padding:0 18px}
+.topBanner img{
+  display:block;
+  width:100%;
+  height:clamp(76px, 14vh, 148px);
+  object-fit:cover;
+  object-position:center 68%;
+  border-radius:16px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
 
 .brand{display:flex; align-items:center; gap:10px}
 .logo{
   width:40px;height:40px;border-radius:14px;
-  border:1px solid var(--line);
-  background: linear-gradient(135deg, rgba(139, 211, 255, 0.205), rgba(185,251,192,.14));
-  box-shadow:var(--shadow);
+  border:1px solid rgba(216,230,248,.22);
+  background:linear-gradient(135deg, rgba(139,211,255,.20), rgba(185,251,192,.14));
   display:grid; place-items:center;
   font-weight:900;
+  color:rgba(242,247,255,.96);
 }
 .brandTitle{display:flex; flex-direction:column; line-height:1.1}
-.brandTitle b{font-size:13px; letter-spacing:.2px}
-.brandTitle span{font-size:12px; color:var(--muted); margin-top:2px}
+.brandTitle b{font-size:13px; letter-spacing:.2px; color:rgba(245,249,255,.96)}
+.brandTitle span{font-size:12px; color:rgba(215,224,240,.80); margin-top:2px}
 
 /* Desktop nav */
-.navLinks{ 
-  font-size: 15px;           /* was ~13px */
-  font-weight: 700;
-  text-transform: uppercase; /* ALL CAPS */
-  letter-spacing: .08em;     /* looks nicer in caps */
-  padding: 12px 14px;        /* slightly larger click area */
+.navLinks{
+  display:flex;
+  align-items:center;
+  gap:1px;
+  font-size:12px;
+  font-weight:500;
+  text-transform:none;
+  letter-spacing:.01em;
 }
 .navItem{position:relative}
 .navLink{
   display:inline-flex; align-items:center; gap:6px;
-  padding:10px 12px;
+  padding:7px 9px;
   border-radius:16px;
   border:1px solid transparent;
-  font-size:13px;
-  color:var(--text);
+  font-size:12px;
+  font-weight:500;
+  color:rgba(241,246,255,.94);
   background:transparent;
   cursor:pointer;
   white-space:nowrap;
 }
-.navLink:hover{border-color:rgba(232,237,243,.16); background:rgba(255,255,255,.03)}
-.navLink.active{border-color:rgba(139,211,255,.35); background:rgba(139,211,255,.10)}
+.navLink:hover{border-color:rgba(230,238,252,.28); background:rgba(255,255,255,.08)}
+.navLink.active{border-color:rgba(139,211,255,.40); background:rgba(139,211,255,.20)}
 .caret{font-size:10px; opacity:.8}
 
 /* Dropdown */
@@ -117,32 +91,40 @@ a{color:inherit; text-decoration:none}
   position:absolute;
   top:44px;
   left:0;
-  min-width: 220px;
+  min-width:220px;
   padding:8px;
   border-radius:18px;
-  border:1px solid var(--line);
-  background: rgba(12,15,20,.92);
-  box-shadow: var(--shadow);
+  border:1px solid rgba(215,230,248,.26);
+  background:rgba(12,15,20,.95);
+  box-shadow:var(--shadow);
 }
 .navItem:hover .dropdown{display:block}
 .dropLink{
-  font-size: 14px;
-  font-weight: 650;
-  text-transform: uppercase;
-  letter-spacing: .06em;
+  display:block;
+  padding:7px 9px;
+  border-radius:12px;
+  border:1px solid transparent;
+  font-size:12px;
+  font-weight:500;
+  text-transform:none;
+  letter-spacing:.01em;
+  color:rgba(239,245,255,.92);
 }
 .dropLink:hover{border-color:rgba(232,237,243,.14); background:rgba(255,255,255,.03)}
 .dropNote{
-    padding:8px 10px; color:var(--muted); font-size:12px;  text-transform: none;
-    letter-spacing: normal;
+  padding:8px 10px;
+  color:rgba(205,217,235,.78);
+  font-size:12px;
+  text-transform:none;
+  letter-spacing:normal;
 }
 
 /* Mobile menu */
 .menuBtn{
   display:none;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.03);
-  color:var(--text);
+  border:1px solid rgba(219,229,246,.25);
+  background:rgba(255,255,255,.08);
+  color:rgba(243,248,255,.95);
   border-radius:14px;
   padding:10px 12px;
   font-size:13px;
@@ -151,24 +133,31 @@ a{color:inherit; text-decoration:none}
 .mobilePanel{
   display:none;
   margin-top:10px;
-  border:1px solid var(--line);
+  border:1px solid rgba(219,229,246,.26);
   border-radius:18px;
-  background: rgba(255,255,255,.02);
+  background:rgba(10,12,16,.96);
   padding:8px;
 }
 .mobilePanel a{
-  font-size: 15px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .08em;
+  display:block;
+  padding:9px 11px;
+  border-radius:12px;
+  border:1px solid transparent;
+  font-size:13px;
+  font-weight:500;
+  text-transform:none;
+  letter-spacing:.01em;
+  color:rgba(239,245,255,.94);
 }
 .mobilePanel a:hover{border-color:rgba(232,237,243,.14); background:rgba(255,255,255,.03)}
 .mobilePanel a.active{border-color:rgba(139,211,255,.35); background:rgba(139,211,255,.10)}
 
-@media (max-width: 900px){
+@media (max-width:900px){
   .navLinks{display:none}
   .menuBtn{display:inline-flex}
   .mobilePanel.show{display:block}
+  .topBanner{margin-top:8px}
+  .topBanner img{height:clamp(60px, 12vh, 96px)}
 }
 
 /* ===== Page sections ===== */
@@ -179,10 +168,10 @@ a{color:inherit; text-decoration:none}
   box-shadow:var(--shadow);
   background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
   display:grid;
-  grid-template-columns: 1.2fr .8fr;
+  grid-template-columns:1.2fr .8fr;
   gap:16px;
 }
-@media (max-width: 900px){ .hero{grid-template-columns:1fr} }
+@media (max-width:900px){ .hero{grid-template-columns:1fr} }
 
 .pill{
   display:inline-flex; align-items:center; gap:8px;
@@ -203,7 +192,7 @@ a{color:inherit; text-decoration:none}
 .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
 
 .grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:12px}
-@media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+@media (max-width:900px){ .grid{grid-template-columns:1fr} }
 .card{
   border:1px solid var(--line);
   border-radius:22px;
@@ -220,7 +209,7 @@ a{color:inherit; text-decoration:none}
 .sectionTitle p{margin:6px 0 0; color:var(--muted); font-size:13px; max-width:80ch}
 
 .counters{display:grid; grid-template-columns:repeat(4, 1fr); gap:12px}
-@media (max-width: 900px){ .counters{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:900px){ .counters{grid-template-columns:repeat(2,1fr)} }
 .counter{
   border:1px solid var(--line);
   border-radius:22px;
@@ -231,7 +220,7 @@ a{color:inherit; text-decoration:none}
 .counter span{display:block; margin-top:6px; color:var(--muted); font-size:12px}
 
 .news{display:grid; grid-template-columns:repeat(2, 1fr); gap:12px}
-@media (max-width: 900px){ .news{grid-template-columns:1fr} }
+@media (max-width:900px){ .news{grid-template-columns:1fr} }
 .newsItem{border:1px solid var(--line); border-radius:22px; padding:14px; background:rgba(255,255,255,.02)}
 .newsItem b{display:block}
 .newsMeta{margin-top:6px; color:var(--muted); font-size:12px}
