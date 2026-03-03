@@ -34,48 +34,94 @@ a{color:inherit; text-decoration:none}
 
 .topBanner{
   width:min(1064px, calc(100% - 36px));
+  height:clamp(176px, 20vh, 248px);
   margin:0 auto 10px;
-  aspect-ratio:2048 / 600;
   position:relative;
   isolation:isolate;
   border-radius:14px;
   border:1px solid rgba(11,18,32,.14);
   box-shadow:var(--shadow);
+  overflow:hidden;
   background-image:
-    linear-gradient(90deg, rgba(7,16,34,.60), rgba(7,16,34,.15) 45%, rgba(7,16,34,.06)),
+    linear-gradient(90deg, rgba(7,16,34,.56), rgba(7,16,34,.18) 43%, rgba(7,16,34,.08)),
     url("nav-bg.png");
   background-size:cover;
   background-position:center;
-  overflow:hidden;
+
+  /* Banner-local geometry for the 1-2-3-4 chain:
+     Forest -> Pasture -> Cropland -> Wetland */
+  --topHexW: clamp(90px, 11vw, 148px);
+  --topHexH: calc(var(--topHexW) * 0.866);
+  --topForestX: 52%;
+  --topForestY: 36%;
+  --topStepX: calc(var(--topHexW) * 0.75);
+  --topStepY: calc(var(--topHexH) * 0.44);
 }
 .topBanner::before{
   content:"";
   position:absolute;
   inset:0;
   background:
-    radial-gradient(550px 260px at 10% 50%, rgba(139,211,255,.28), transparent 70%),
-    radial-gradient(520px 240px at 92% 50%, rgba(185,251,192,.18), transparent 70%);
+    radial-gradient(560px 250px at 12% 55%, rgba(139,211,255,.30), transparent 72%),
+    radial-gradient(500px 220px at 85% 52%, rgba(185,251,192,.20), transparent 72%);
   z-index:0;
 }
-.topBanner .hex{
+.topBanner__brainGlow{
+  position:absolute;
+  left:-2%;
+  top:4%;
+  width:46%;
+  height:94%;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(closest-side, rgba(132,213,255,.36), rgba(132,213,255,0) 72%),
+    radial-gradient(closest-side, rgba(82,150,255,.34), rgba(82,150,255,0) 76%);
+  filter: blur(8px);
+}
+.topBanner__links{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
   z-index:1;
-  --hexW: clamp(96px, 16vw, 190px);
+  pointer-events:none;
+}
+.topBanner__path{
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.topBanner__path--brain{
+  stroke:rgba(152,229,255,.76);
+  stroke-width:2.8;
+  filter: drop-shadow(0 0 6px rgba(132,208,255,.55));
+}
+.topBanner__path--chain{
+  stroke:rgba(174,238,255,.88);
+  stroke-width:3.6;
+  filter: drop-shadow(0 0 8px rgba(133,224,255,.62));
+}
+.topBanner .hex{
+  z-index:2;
+  --hexW: var(--topHexW);
+  transform:translate(-50%, -50%);
 }
 .topBanner .hex--forest{
-  left: 10%;
-  top:  14%;
+  left: var(--topForestX);
+  top:  var(--topForestY);
 }
 .topBanner .hex--pasture{
-  left: 31%;
-  top:  52%;
+  left: calc(var(--topForestX) + var(--topStepX));
+  top:  calc(var(--topForestY) + var(--topStepY));
 }
 .topBanner .hex--cropland{
-  left: 53%;
-  top:  14%;
+  left: calc(var(--topForestX) + var(--topStepX) + var(--topStepX));
+  top:  var(--topForestY);
 }
 .topBanner .hex--wetland{
-  left: 74%;
-  top:  52%;
+  left: calc(var(--topForestX) + var(--topStepX) + var(--topStepX) + var(--topStepX));
+  top:  calc(var(--topForestY) + var(--topStepY));
 }
 
 .brand{display:flex; align-items:center; gap:10px}
@@ -195,8 +241,13 @@ a{color:inherit; text-decoration:none}
   .mobilePanel.show{display:block}
   .topBanner{
     border-radius:10px;
-    aspect-ratio:16 / 9;
+    height:clamp(150px, 24vh, 210px);
+    --topHexW: clamp(68px, 16vw, 104px);
+    --topForestX: 31%;
+    --topForestY: 37%;
   }
+  .topBanner__path--brain{ stroke-width:2.4; }
+  .topBanner__path--chain{ stroke-width:3.0; }
 }
 
 /* ===== Page sections ===== */
@@ -397,7 +448,10 @@ a{color:inherit; text-decoration:none}
 /* Responsive: shrink hexes */
 @media (max-width: 1100px){
   .hex{ --hexW: 200px; }
-  .topBanner .hex{ --hexW: clamp(88px, 15vw, 160px); }
+  .topBanner{
+    --topHexW: clamp(82px, 12vw, 130px);
+    --topForestX: 50%;
+  }
 }
 @media (max-width: 900px){
   .hex{ --hexW: 160px; }
@@ -406,23 +460,23 @@ a{color:inherit; text-decoration:none}
   .hex--cropland { left: 66%; top: 22%; }
   .hex--wetland  { left: 70%; top: 62%; }
 
-  .topBanner .hex{ --hexW: clamp(76px, 18vw, 132px); }
-  .topBanner .hex--forest  { left: 6%;  top: 12%; }
-  .topBanner .hex--pasture { left: 27%; top: 54%; }
-  .topBanner .hex--cropland{ left: 50%; top: 12%; }
-  .topBanner .hex--wetland { left: 71%; top: 54%; }
+  .topBanner{
+    --topHexW: clamp(70px, 12.5vw, 106px);
+    --topForestX: 42%;
+    --topForestY: 37%;
+  }
 }
 @media (max-width: 560px){
   .topBanner{
-    aspect-ratio:4 / 3;
+    height:clamp(142px, 24vh, 188px);
+    --topHexW: clamp(56px, 16vw, 80px);
+    --topForestX: 26%;
+    --topForestY: 38%;
   }
-  .topBanner .hex{
-    --hexW: 88px;
+  .topBanner__brainGlow{
+    width:56%;
+    filter:blur(6px);
   }
-  .topBanner .hex--forest  { left: 8%;  top: 10%; }
-  .topBanner .hex--pasture { left: 29%; top: 52%; }
-  .topBanner .hex--cropland{ left: 51%; top: 10%; }
-  .topBanner .hex--wetland { left: 72%; top: 52%; }
 }
 
 /* AI/brain layer on the left side of the banner */
