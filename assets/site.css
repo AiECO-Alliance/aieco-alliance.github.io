@@ -5,6 +5,9 @@
   --text:#0b1220;
   --line: rgba(11,18,32,.14);
   --shadow: 0 10px 30px rgba(11,18,32,.10);
+  --header-brand-size:16px;
+  --header-subtitle-size:13px;
+  --header-nav-size:14px;
 }
 
 *{box-sizing:border-box}
@@ -34,7 +37,7 @@ a{color:inherit; text-decoration:none}
 
 .topBanner{
   width:min(1064px, calc(100% - 36px));
-  height:clamp(176px, 20vh, 248px);
+  height:clamp(132px, 15vh, 186px);
   margin:0 auto 10px;
   position:relative;
   isolation:isolate;
@@ -50,7 +53,7 @@ a{color:inherit; text-decoration:none}
 
   /* Banner-local geometry for the 1-2-3-4 chain:
      Forest -> Pasture -> Cropland -> Wetland */
-  --topHexW: clamp(90px, 11vw, 148px);
+  --topHexW: clamp(72px, 9vw, 104px);
   --topHexH: calc(var(--topHexW) * 0.866);
   --topForestX: 52%;
   --topForestY: 36%;
@@ -135,8 +138,8 @@ a{color:inherit; text-decoration:none}
   display:block;
 }
 .brandTitle{display:flex; flex-direction:column; line-height:1.1}
-.brandTitle b{font-size:13px; letter-spacing:.2px; color:#102338}
-.brandTitle span{font-size:12px; color:#4b5f77; margin-top:2px}
+.brandTitle b{font-size:var(--header-brand-size); letter-spacing:.2px; color:#102338}
+.brandTitle span{font-size:var(--header-subtitle-size); color:#4b5f77; margin-top:2px}
 
 /* Desktop nav */
 .navLinks{
@@ -146,7 +149,7 @@ a{color:inherit; text-decoration:none}
   align-items:center;
   margin-left:auto;
   gap:1px;
-  font-size:13px;
+  font-size:var(--header-nav-size);
   font-weight:600;
   text-transform:none;
   letter-spacing:.01em;
@@ -154,10 +157,10 @@ a{color:inherit; text-decoration:none}
 .navItem{position:relative}
 .navLink{
   display:inline-flex; align-items:center; gap:6px;
-  padding:7px 10px;
+  padding:8px 11px;
   border-radius:10px;
   border:1px solid transparent;
-  font-size:13px;
+  font-size:var(--header-nav-size);
   font-weight:600;
   color:#1b324b;
   background:transparent;
@@ -187,7 +190,7 @@ a{color:inherit; text-decoration:none}
   padding:7px 9px;
   border-radius:12px;
   border:1px solid transparent;
-  font-size:13px;
+  font-size:calc(var(--header-nav-size) - 1px);
   font-weight:500;
   text-transform:none;
   letter-spacing:.01em;
@@ -210,7 +213,7 @@ a{color:inherit; text-decoration:none}
   color:#1b324b;
   border-radius:14px;
   padding:10px 12px;
-  font-size:13px;
+  font-size:var(--header-nav-size);
   cursor:pointer;
 }
 .mobilePanel{
@@ -226,7 +229,7 @@ a{color:inherit; text-decoration:none}
   padding:9px 11px;
   border-radius:12px;
   border:1px solid transparent;
-  font-size:13px;
+  font-size:var(--header-nav-size);
   font-weight:500;
   text-transform:none;
   letter-spacing:.01em;
@@ -239,10 +242,12 @@ a{color:inherit; text-decoration:none}
   .navLinks{display:none}
   .menuBtn{display:inline-flex}
   .mobilePanel.show{display:block}
+  .brandTitle b{font-size:15px}
+  .brandTitle span{font-size:12px}
   .topBanner{
     border-radius:10px;
-    height:clamp(150px, 24vh, 210px);
-    --topHexW: clamp(68px, 16vw, 104px);
+    height:clamp(118px, 19vh, 156px);
+    --topHexW: clamp(54px, 12vw, 74px);
     --topForestX: 31%;
     --topForestY: 37%;
   }
@@ -449,7 +454,7 @@ a{color:inherit; text-decoration:none}
 @media (max-width: 1100px){
   .hex{ --hexW: 200px; }
   .topBanner{
-    --topHexW: clamp(82px, 12vw, 130px);
+    --topHexW: clamp(66px, 9.5vw, 96px);
     --topForestX: 50%;
   }
 }
@@ -461,15 +466,15 @@ a{color:inherit; text-decoration:none}
   .hex--wetland  { left: 70%; top: 62%; }
 
   .topBanner{
-    --topHexW: clamp(70px, 12.5vw, 106px);
+    --topHexW: clamp(60px, 10.5vw, 84px);
     --topForestX: 42%;
     --topForestY: 37%;
   }
 }
 @media (max-width: 560px){
   .topBanner{
-    height:clamp(142px, 24vh, 188px);
-    --topHexW: clamp(56px, 16vw, 80px);
+    height:clamp(102px, 18vh, 136px);
+    --topHexW: clamp(46px, 14vw, 62px);
     --topForestX: 26%;
     --topForestY: 38%;
   }
